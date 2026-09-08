@@ -1,0 +1,686 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sreemsun Anand | AI Engineer Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Space+Grotesk:wght@600;700&amp;family=Geist:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#5516be",
+                      "inverse-on-surface": "#313032",
+                      "secondary-container": "#03b5d3",
+                      "surface": "#131315",
+                      "inverse-surface": "#e5e1e4",
+                      "on-primary": "#1000a9",
+                      "surface-container-lowest": "#0e0e10",
+                      "on-tertiary": "#3c0091",
+                      "on-surface-variant": "#c7c4d7",
+                      "outline-variant": "#464554",
+                      "on-surface": "#e5e1e4",
+                      "tertiary-fixed-dim": "#d0bcff",
+                      "on-primary-fixed": "#07006c",
+                      "surface-variant": "#353437",
+                      "error-container": "#93000a",
+                      "on-secondary-fixed": "#001f26",
+                      "outline": "#908fa0",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "on-background": "#e5e1e4",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "on-error-container": "#ffdad6",
+                      "error": "#ffb4ab",
+                      "on-tertiary-container": "#340080",
+                      "primary": "#c0c1ff",
+                      "surface-container-highest": "#353437",
+                      "on-secondary": "#003640",
+                      "surface-container-high": "#2a2a2c",
+                      "tertiary-container": "#a078ff",
+                      "secondary-fixed": "#acedff",
+                      "on-tertiary-fixed": "#23005c",
+                      "on-primary-container": "#0d0096",
+                      "tertiary": "#d0bcff",
+                      "on-error": "#690005",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "primary-fixed": "#e1e0ff",
+                      "inverse-primary": "#494bd6",
+                      "surface-container-low": "#1c1b1d",
+                      "surface-tint": "#c0c1ff",
+                      "tertiary-fixed": "#e9ddff",
+                      "surface-dim": "#131315",
+                      "surface-container": "#201f22",
+                      "background": "#09090B",
+                      "secondary": "#4cd7f6",
+                      "primary-container": "#8083ff",
+                      "on-secondary-container": "#00424e",
+                      "surface-bright": "#39393b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "stack-md": "24px",
+                      "stack-sm": "12px",
+                      "card-gap": "32px",
+                      "container-padding": "24px",
+                      "section-gap": "120px"
+              },
+              "fontFamily": {
+                      "label-md": ["Geist"],
+                      "display-lg": ["Space Grotesk"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Space Grotesk"],
+                      "display-lg-mobile": ["Space Grotesk"],
+                      "body-md": ["Inter"],
+                      "code": ["Geist"],
+                      "headline-lg": ["Space Grotesk"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg-mobile": ["40px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "code": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #09090B;
+            color: #e5e1e4;
+            overflow-x: hidden;
+        }
+        .grid-pattern {
+            background-image: radial-gradient(#ffffff10 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .glass-card {
+            background: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+        }
+        .glow-orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 100%;
+            filter: blur(150px);
+            z-index: -1;
+            opacity: 0.15;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #c0c1ff 0%, #4cd7f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .custom-cursor {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            position: fixed;
+            pointer-events: none;
+            z-index: 100;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body class="font-body-md">
+<div class="custom-cursor" id="cursor-glow" style="left: 876px; top: 1234px;"></div>
+<!-- Background Elements -->
+<div class="fixed inset-0 grid-pattern pointer-events-none z-0"></div>
+<div class="glow-orb bg-primary top-[-100px] left-[-100px]"></div>
+<div class="glow-orb bg-secondary bottom-[-100px] right-[-100px]"></div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10">
+<nav class="max-w-7xl mx-auto px-container-padding py-4 flex justify-between items-center">
+<a class="font-display-lg text-headline-md text-on-surface tracking-tighter" href="#">SA</a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#home">Home</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#about">About</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#skills">Skills</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#projects">Projects</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#experience">Experience</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#contact">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md text-label-md hover:scale-95 transition-transform">
+                Resume
+            </button>
+</nav>
+</header>
+<main class="relative z-10">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-24 w-full" id="home">
+
+<div class="px-container-padding max-w-7xl mx-auto grid gap-12 items-center w-full relative z-10">
+<div class="space-y-stack-md reveal active relative z-20 text-center">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-gradient leading-none">
+                        Building Intelligent AI Solutions for the Future.
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">
+                        AI Engineer | Machine Learning Developer | Full Stack Developer. Specializing in deploying scalable neural architectures and high-performance data pipelines.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4 justify-center">
+<a class="bg-[#6366F1] text-white px-8 py-4 rounded-lg font-label-md text-label-md flex items-center gap-2 hover:brightness-110 transition-all shadow-lg shadow-indigo-500/20" href="#projects">
+                            View Projects
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+<button class="border border-outline-variant text-on-surface px-8 py-4 rounded-lg font-label-md text-label-md hover:bg-white/5 transition-all">
+                            Download Resume
+                        </button>
+</div>
+</div>
+
+</div>
+</section>
+<!-- About & Stats Section -->
+<section class="py-section-gap px-container-padding max-w-7xl mx-auto" id="about">
+<div class="grid lg:grid-cols-3 gap-card-gap">
+<div class="lg:col-span-2 space-y-stack-md reveal active">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">About Me</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        I am an AI Engineer dedicated to crafting seamless digital experiences that bridge the gap between complex machine learning models and intuitive user interfaces. With a strong foundation in both backend architecture and deep learning, I build solutions that aren't just smart, but scalable and human-centric.
+                    </p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8">
+<div class="glass-card p-6 rounded-xl text-center">
+<span class="block font-display-lg text-headline-md text-primary">15+</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Projects Done</span>
+</div>
+<div class="glass-card p-6 rounded-xl text-center">
+<span class="block font-display-lg text-headline-md text-secondary">20+</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Tech Stack</span>
+</div>
+<div class="glass-card p-6 rounded-xl text-center">
+<span class="block font-display-lg text-headline-md text-tertiary">10+</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Certifications</span>
+</div>
+<div class="glass-card p-6 rounded-xl text-center">
+<span class="block font-display-lg text-headline-md text-primary-container">2</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Internships</span>
+</div>
+</div>
+</div>
+<div class="reveal delay-200 active">
+<div class="h-full min-h-[300px] glass-card rounded-2xl relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img class="w-full h-full object-cover" data-alt="A professional and sleek studio portrait of a young male software engineer in a modern workspace environment. The lighting is moody and cinematic with indigo and cyan highlights reflecting off technical equipment in the background. He is wearing a dark, minimalist tech-wear outfit, looking confidently into the camera. The overall vibe is professional, innovative, and deeply integrated with the dark-themed UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCTb-xyqzvqtK0UNC5P9O_CnYKE8cG84cLu_FHbRgZVNScglYsK-jijVM6J6JkTppxxgCmvOUmZ09NTA2Q0dl07vN5OHaqBELT5zjT7DNJtKje5xIGBStIqgF7W_9M7FqXjXmaD3BPI5gRSRXVe57XfWL2s4eh-rZR-CmhRr163ev1NVjJp7Sk-JtwabfYPW5qcdvtPYkKj4qBvmO3HAYFP7fVhtz-BKnsTqQj-2lSTKUGDiiR8h6mtA" style="mask-image: radial-gradient(circle, black 40%, transparent 100%);">
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section class="py-section-gap px-container-padding max-w-7xl mx-auto bg-surface-container-lowest/50 rounded-[40px]" id="skills">
+<div class="text-center mb-16 reveal active">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Technical Arsenal</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">The core foundations of my engineering process</p>
+</div>
+<div class="grid md:grid-cols-3 gap-base md:gap-card-gap">
+<!-- Programming -->
+<div class="glass-card p-8 rounded-2xl reveal active">
+<div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">code</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Programming</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-variant border border-outline-variant rounded text-label-md font-label-md">Python</span>
+<span class="px-3 py-1 bg-surface-variant border border-outline-variant rounded text-label-md font-label-md">JavaScript</span>
+<span class="px-3 py-1 bg-surface-variant border border-outline-variant rounded text-label-md font-label-md">C++</span>
+<span class="px-3 py-1 bg-surface-variant border border-outline-variant rounded text-label-md font-label-md">TypeScript</span>
+</div>
+</div>
+<!-- AI & ML -->
+<div class="glass-card p-8 rounded-2xl reveal delay-100 active">
+<div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary">memory</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">AI &amp; ML</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-variant border border-outline-variant rounded text-label-md font-label-md">PyTorch</span>
+<span class="px-3 py-1 bg-surface-variant border border-outline-variant rounded text-label-md font-label-md">TensorFlow</span>
+<span class="px-3 py-1 bg-surface-variant border border-outline-variant rounded text-label-md font-label-md">Scikit-learn</span>
+<span class="px-3 py-1 bg-surface-variant border border-outline-variant rounded text-label-md font-label-md">NLP</span>
+</div>
+</div>
+<!-- Backend -->
+<div class="glass-card p-8 rounded-2xl reveal delay-200 active">
+<div class="w-12 h-12 bg-tertiary/20 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-tertiary">dns</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Backend</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-variant border border-outline-variant rounded text-label-md font-label-md">FastAPI</span>
+<span class="px-3 py-1 bg-surface-variant border border-outline-variant rounded text-label-md font-label-md">Django</span>
+<span class="px-3 py-1 bg-surface-variant border border-outline-variant rounded text-label-md font-label-md">Node.js</span>
+<span class="px-3 py-1 bg-surface-variant border border-outline-variant rounded text-label-md font-label-md">Docker</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Projects -->
+<section class="py-section-gap px-container-padding max-w-7xl mx-auto" id="projects">
+<div class="flex justify-between items-end mb-16 reveal active">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Selected Works</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Proof of concepts and production-ready architectures</p>
+</div>
+<a class="hidden md:flex items-center gap-2 text-primary font-label-md hover:gap-3 transition-all" href="#">
+                    View All Projects <span class="material-symbols-outlined">north_east</span>
+</a>
+</div>
+<div class="grid gap-12">
+<!-- Project 1 -->
+<div class="glass-card rounded-[32px] overflow-hidden grid lg:grid-cols-2 group reveal active">
+<div class="relative overflow-hidden h-[300px] lg:h-full">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A high-fidelity conceptual rendering of a neural network visualization interface. Glowing nodes and cyan-colored pathways represent data flow between layers. The background is a deep obsidian void with a subtle 3D grid, reflecting a premium dark-mode AI dashboard aesthetic. Dynamic light streaks emphasize the speed and intelligence of the system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8_xBhkua1YiAao6dMrD5A5kVftxzkOFHAzKQW-R6olVWltEPTEK2TXlwvyG9DUNRXemkxLw1S-TlE3K-ZpFmRXq9tgfMG63eodWOzmwEI5jsVASt0som_IXsgo4x6c_IdeLKtCYU6NCVUDfHoL1MV4O4ar2TKdh3ujM8wBG7kBOgkSCcw5VSY9I6lIz1rQkcpRNl8vlIQIBfBgfCrKsGT_NLqq44ZXIPEImY81Tpj55IYWAFSwHNjJw">
+</div>
+<div class="p-12 flex flex-col justify-center space-y-6">
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-[12px] font-label-md">Computer Vision</span>
+<span class="px-3 py-1 bg-secondary/10 text-secondary border border-secondary/20 rounded-full text-[12px] font-label-md">Python</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">NeuroFlow Analytics</h3>
+<p class="font-body-md text-on-surface-variant">
+                            An end-to-end real-time video analytics platform utilizing YOLOv8 and custom transformer backbones to detect and track complex industrial anomalies with 98% accuracy.
+                        </p>
+<div class="flex gap-4">
+<a class="flex items-center gap-2 text-on-surface font-label-md hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">code</span> GitHub
+                            </a>
+<a class="flex items-center gap-2 text-on-surface font-label-md hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">rocket_launch</span> Live Demo
+                            </a>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="glass-card rounded-[32px] overflow-hidden grid lg:grid-cols-2 group reveal active">
+<div class="p-12 flex flex-col justify-center space-y-6 order-2 lg:order-1">
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-tertiary/10 text-tertiary border border-tertiary/20 rounded-full text-[12px] font-label-md">NLP</span>
+<span class="px-3 py-1 bg-primary-container/10 text-primary-container border border-primary-container/20 rounded-full text-[12px] font-label-md">FastAPI</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">EchoSemantic Engine</h3>
+<p class="font-body-md text-on-surface-variant">
+                            Distributed vector database integration for semantic search across 5M+ technical documents. Built with Pinecone and fine-tuned BERT models for enterprise-grade retrieval.
+                        </p>
+<div class="flex gap-4">
+<a class="flex items-center gap-2 text-on-surface font-label-md hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">code</span> GitHub
+                            </a>
+<a class="flex items-center gap-2 text-on-surface font-label-md hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">rocket_launch</span> Live Demo
+                            </a>
+</div>
+</div>
+<div class="relative overflow-hidden h-[300px] lg:h-full order-1 lg:order-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A minimalist and abstract representation of text data processing. Geometric blocks resembling pages are being scanned by a clean, white beam of light, converting them into digital particles that float into an organized structure. The color palette consists of deep violets, indigos, and soft greys, aligned with the Vercel-style minimalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9lzW3ipV_HNL4e50VT8L1vQtD4j65SpESjkQ5i4VLbrUaiF8UYuJYOYS3XFjhle2F5Hj9mF8XjrPMiiXMWWrraNnJ8qZ3FVOupBayF5yOHVqfGXZIwOrI9JwYu0cMhCR8bkAjpuP2GRC3tJG1nqydptGWDPZx5sLUdS4PrguiZzIFu_8XBN8oX-sxsVZLa2ioQGoQPrC4RtoMBz-svWdWBikSqrFkQ16KYREbL-ZTMmFI0p0pjzHeeg">
+</div>
+</div>
+</div>
+</section>
+<!-- Experience & Education -->
+<section class="py-section-gap px-container-padding max-w-7xl mx-auto grid lg:grid-cols-2 gap-16" id="experience">
+<div class="reveal active">
+<div class="flex items-center gap-4 mb-12">
+<div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">work</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg">Work Experience</h2>
+</div>
+<div class="space-y-12 border-l-2 border-outline-variant ml-5 pl-10 relative">
+<div class="relative">
+<div class="absolute w-4 h-4 bg-primary rounded-full -left-[49px] top-1 border-4 border-[#09090B]"></div>
+<span class="text-primary font-label-md text-label-md">Present</span>
+<h4 class="font-headline-md text-on-surface mt-2">AI Engineering Intern</h4>
+<p class="text-on-surface-variant font-body-md">TechNova Solutions | Remote</p>
+<p class="mt-4 text-on-surface-variant/80">Leading the development of an automated document parser using OCR and LLMs for legal compliance auditing.</p>
+</div>
+<div class="relative">
+<div class="absolute w-4 h-4 bg-outline rounded-full -left-[49px] top-1 border-4 border-[#09090B]"></div>
+<span class="text-on-surface-variant font-label-md text-label-md">Jun 2023 - Aug 2023</span>
+<h4 class="font-headline-md text-on-surface mt-2">Machine Learning Intern</h4>
+<p class="text-on-surface-variant font-body-md">DataStream Corp</p>
+<p class="mt-4 text-on-surface-variant/80">Optimized data preprocessing pipelines, reducing training time for classification models by 40%.</p>
+</div>
+</div>
+</div>
+<div class="reveal delay-200 active">
+<div class="flex items-center gap-4 mb-12">
+<div class="w-10 h-10 bg-secondary/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">school</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg">Education</h2>
+</div>
+<div class="space-y-12 border-l-2 border-outline-variant ml-5 pl-10 relative">
+<div class="relative">
+<div class="absolute w-4 h-4 bg-secondary rounded-full -left-[49px] top-1 border-4 border-[#09090B]"></div>
+<span class="text-secondary font-label-md text-label-md">2021 - 2025</span>
+<h4 class="font-headline-md text-on-surface mt-2">B.Tech in Artificial Intelligence</h4>
+<p class="text-on-surface-variant font-body-md">Institute of Technology &amp; Science</p>
+<p class="mt-4 text-on-surface-variant/80">Focusing on Deep Learning, Natural Language Processing, and Advanced Statistics. CGPA: 9.2/10.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Certifications -->
+<section class="py-section-gap px-container-padding max-w-7xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-12 reveal active">Certifications</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="glass-card p-6 rounded-xl reveal active">
+<span class="material-symbols-outlined text-primary mb-4">verified</span>
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Deep Learning Specialization</h4>
+<p class="text-[12px] text-on-surface-variant">Coursera - DeepLearning.AI</p>
+</div>
+<div class="glass-card p-6 rounded-xl reveal delay-75 active">
+<span class="material-symbols-outlined text-secondary mb-4">verified</span>
+<h4 class="font-label-md text-label-md text-on-surface mb-1">AWS Certified Machine Learning</h4>
+<p class="text-[12px] text-on-surface-variant">Amazon Web Services</p>
+</div>
+<div class="glass-card p-6 rounded-xl reveal delay-150 active">
+<span class="material-symbols-outlined text-tertiary mb-4">verified</span>
+<h4 class="font-label-md text-label-md text-on-surface mb-1">TensorFlow Developer</h4>
+<p class="text-[12px] text-on-surface-variant">Google</p>
+</div>
+<div class="glass-card p-6 rounded-xl reveal delay-225 active">
+<span class="material-symbols-outlined text-primary-container mb-4">verified</span>
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Natural Language Processing</h4>
+<p class="text-[12px] text-on-surface-variant">Stanford Online</p>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-section-gap px-container-padding max-w-7xl mx-auto" id="contact">
+<div class="glass-card rounded-[40px] p-8 md:p-20 relative overflow-hidden reveal active">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+</div>
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div class="space-y-stack-md">
+<h2 class="font-display-lg text-display-lg-mobile md:text-headline-lg">Let's Build Something Amazing Together.</h2>
+<p class="font-body-lg text-on-surface-variant">Have a project idea or just want to chat about AI? I'm always open to new opportunities and collaborations.</p>
+<div class="flex gap-6 pt-8">
+<a class="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors" href="#">
+<img alt="GitHub" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClyGD_Nzrria5lhfbs_mxRv0cfEguW92t4J7zzKvNXwz4Jq0pnWszB5yIuIZAjGp0ey_KCiwcAmqgDoGOhJ9PShJaP7ZAdLrA_FK8DGUAmbPJkC8STRfcUKf50xo9OS7jcNVcGYrl0UuLp59E4cxXUnTdchNBSXUaDUmUgpnS2RkV6SgzchOpwOkMAwRFi76EgiIswSy9tDmcQ3w1NeqT1vaFTs0pCjvcyiWjMMQXq4c68UY9jPqkYwg">
+</a>
+<a class="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-secondary/20 transition-colors" href="#">
+<img alt="LinkedIn" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjFzRbAiO3CKKNn3lmbrrw_qZtsvFIT_ioB6vy6fgsGGgG-GSpMd4OFoiUpQ-IxAelfK8-MKuzRKPBf81uGzBAKJG4QENbfFeTRG3uEuxPdw90CpeEcj6pps6ria5IaDmjab4dhbiRpmGw4VvYwmGQbpXe4A5k7QAyzjL2aWOWY2o0KcTVV_rqjNRj8yq4JP8Qswa2JhAnobwx9kNATegx1EGQfIxLLylTzNpQBeIa3vv5VlAQPfiUrQ">
+</a>
+<a class="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-tertiary/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-white">mail</span>
+</a>
+</div>
+</div>
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Name</label>
+<input class="w-full bg-surface border-outline-variant rounded-lg p-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-on-surface" type="text">
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Email</label>
+<input class="w-full bg-surface border-outline-variant rounded-lg p-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-on-surface" type="email">
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Message</label>
+<textarea class="w-full bg-surface border-outline-variant rounded-lg p-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-on-surface" rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-lg font-headline-md text-body-lg hover:brightness-110 transition-all flex justify-center items-center gap-2" type="submit">
+                            Send Message <span class="material-symbols-outlined">send</span>
+</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-md flex flex-col items-center gap-base border-t border-outline-variant bg-surface relative z-10">
+<div class="font-display-lg-mobile text-display-lg-mobile text-on-surface">SA</div>
+<div class="flex gap-8 mb-4">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-opacity opacity-80 hover:opacity-100" href="#">GitHub</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-opacity opacity-80 hover:opacity-100" href="#">LinkedIn</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-opacity opacity-80 hover:opacity-100" href="#">Twitter</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-opacity opacity-80 hover:opacity-100" href="#">Email</a>
+</div>
+<p class="font-body-md text-body-md text-secondary">© 2024 Sreemsun Anand. Engineered for the future.</p>
+</footer>
+<script>
+        // Custom Cursor Glow
+        const cursor = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Background WebGL Shader (Three.js implementation for ease)
+        const bgCanvas = document.getElementById('hero-bg-canvas');
+        if (bgCanvas) {
+            const bgScene = new THREE.Scene();
+            const bgCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+            const bgRenderer = new THREE.WebGLRenderer({ canvas: bgCanvas, alpha: true, antialias: false });
+            bgRenderer.setSize(window.innerWidth, window.innerHeight);
+            bgRenderer.setPixelRatio(window.devicePixelRatio);
+
+            const bgFragmentShader = `
+precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+
+float hash(vec2 p) {
+    p = fract(p * vec2(123.34, 456.21));
+    p += dot(p, p + 45.32);
+    return fract(p.x * p.y);
+}
+
+void main() {
+    vec2 uv = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / min(u_resolution.y, u_resolution.x);
+    vec2 mouse = (u_mouse / u_resolution) - 0.5;
+    
+    float m_dist = length(uv - mouse);
+    
+    vec3 color = vec3(0.035, 0.035, 0.043); // Deep background
+    
+    // Animated grid/mesh
+    vec2 grid_uv = uv * 10.0;
+    vec2 id = floor(grid_uv);
+    vec2 gv = fract(grid_uv) - 0.5;
+    
+    float line = smoothstep(0.48, 0.5, abs(gv.x)) + smoothstep(0.48, 0.5, abs(gv.y));
+    color += line * 0.02;
+    
+    // Glowing connections/neural nodes
+    for(float i=0.0; i<4.0; i++) {
+        float speed = 0.2 + i * 0.1;
+        float t = u_time * speed;
+        vec2 p = vec2(sin(t + i*1.5), cos(t * 0.8 + i)) * 0.4;
+        float d = length(uv - p);
+        float glow = 0.002 / d;
+        color += glow * vec3(0.39, 0.4, 0.95); // Accent color
+    }
+
+    // Vignette
+    color *= 1.0 - length(uv) * 0.5;
+    
+    gl_FragColor = vec4(color, 1.0);
+}
+            `;
+
+            const uniforms = {
+                u_time: { value: 0.0 },
+                u_resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+                u_mouse: { value: new THREE.Vector2(0, 0) }
+            };
+
+            const bgMaterial = new THREE.ShaderMaterial({
+                fragmentShader: bgFragmentShader,
+                uniforms: uniforms
+            });
+
+            const bgPlane = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), bgMaterial);
+            bgScene.add(bgPlane);
+
+            let bgMouseX = 0, bgMouseY = 0;
+            document.addEventListener('mousemove', (e) => {
+                bgMouseX = e.clientX;
+                bgMouseY = window.innerHeight - e.clientY;
+            });
+
+            function renderBg(time) {
+                uniforms.u_time.value = time * 0.001;
+                uniforms.u_mouse.value.set(bgMouseX, bgMouseY);
+                bgRenderer.render(bgScene, bgCamera);
+                requestAnimationFrame(renderBg);
+            }
+            requestAnimationFrame(renderBg);
+
+            window.addEventListener('resize', () => {
+                bgRenderer.setSize(window.innerWidth, window.innerHeight);
+                uniforms.u_resolution.value.set(window.innerWidth, window.innerHeight);
+            });
+        }
+
+        // Hero 3D Scene
+        const container = document.getElementById('hero-3d-container');
+        if (container) {
+            const width = container.clientWidth || window.innerWidth;
+            const height = container.clientHeight || window.innerHeight;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+            camera.position.z = 5;
+
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            // Create a futuristic "Brain Core" object
+            const group = new THREE.Group();
+            scene.add(group);
+
+            const geometry = new THREE.IcosahedronGeometry(1, 15);
+            const material = new THREE.MeshPhongMaterial({
+                color: 0x6366f1,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.6,
+                emissive: 0x6366f1,
+                emissiveIntensity: 0.5
+            });
+
+            const core = new THREE.Mesh(geometry, material);
+            group.add(core);
+
+            // Inner solid core
+            const innerGeo = new THREE.IcosahedronGeometry(0.6, 2);
+            const innerMat = new THREE.MeshStandardMaterial({
+                color: 0x06b6d4,
+                metalness: 0.9,
+                roughness: 0.1,
+                emissive: 0x06b6d4,
+                emissiveIntensity: 0.2
+            });
+            const innerCore = new THREE.Mesh(innerGeo, innerMat);
+            group.add(innerCore);
+
+            // Outer rings
+            const ringGeo = new THREE.TorusGeometry(2, 0.02, 16, 100);
+            const ringMat = new THREE.MeshBasicMaterial({ color: 0x8b5cf6, transparent: true, opacity: 0.3 });
+            const ring1 = new THREE.Mesh(ringGeo, ringMat);
+            const ring2 = new THREE.Mesh(ringGeo, ringMat);
+            ring2.rotation.x = Math.PI / 2;
+            group.add(ring1, ring2);
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+
+            const pointLight = new THREE.PointLight(0x6366f1, 1);
+            pointLight.position.set(5, 5, 5);
+            scene.add(pointLight);
+
+            let mouseX = 0, mouseY = 0;
+            document.addEventListener('mousemove', (e) => {
+                mouseX = (e.clientX / window.innerWidth) - 0.5;
+                mouseY = (e.clientY / window.innerHeight) - 0.5;
+            });
+
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                group.rotation.y += 0.005;
+                group.rotation.x += 0.002;
+                
+                // Smooth mouse follow
+                group.rotation.y += (mouseX * 0.5 - group.rotation.y) * 0.05;
+                group.rotation.x += (mouseY * 0.5 - group.rotation.x) * 0.05;
+                
+                core.scale.setScalar(1 + Math.sin(Date.now() * 0.002) * 0.05);
+                
+                renderer.render(scene, camera);
+            }
+
+            window.addEventListener('resize', () => {
+                const w = container.clientWidth || window.innerWidth;
+                const h = container.clientHeight || window.innerHeight;
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+                renderer.setSize(w, h);
+            });
+
+            animate();
+        }
+    </script>
+
+
+</body></html>
