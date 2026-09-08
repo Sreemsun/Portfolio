@@ -136,7 +136,7 @@ export function About() {
               flexDirection: 'column',
               justify: 'flex-end',
             }}>
-              {/* Full Tile Image - Darkened & Subtle */}
+              {/* Full Tile Image */}
               <img
                 src="/profile.png"
                 alt="Sreemsun Anand"
@@ -148,8 +148,8 @@ export function About() {
                   objectFit: 'cover',
                   objectPosition: 'center 20%',
                   display: 'block',
-                  opacity: 0.45,
-                  filter: 'brightness(0.4) contrast(1.15) grayscale(20%)',
+                  opacity: 0.85,
+                  filter: 'brightness(0.75) contrast(1.05)',
                 }}
               />
 
@@ -157,7 +157,7 @@ export function About() {
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.72) 45%, rgba(0,0,0,0.96) 82%, #000000 100%)',
+                background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.88) 85%, #000000 100%)',
                 pointerEvents: 'none',
               }} />
 
