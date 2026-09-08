@@ -136,7 +136,7 @@ export function About() {
               flexDirection: 'column',
               justify: 'flex-end',
             }}>
-              {/* Full Tile Image */}
+              {/* Full Tile Image - Darkened & Subtle */}
               <img
                 src="/profile.png"
                 alt="Sreemsun Anand"
@@ -148,16 +148,19 @@ export function About() {
                   objectFit: 'cover',
                   objectPosition: 'center 20%',
                   display: 'block',
+                  opacity: 0.45,
+                  filter: 'brightness(0.4) contrast(1.15) grayscale(20%)',
                 }}
               />
 
-              {/* Seamless Fade Gradient Overlay into background */}
+              {/* Seamless Dark Gradient Overlay */}
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0.92) 82%, #000000 100%)',
+                background: 'linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.72) 45%, rgba(0,0,0,0.96) 82%, #000000 100%)',
                 pointerEvents: 'none',
               }} />
+
 
               {/* Text & Status Pill overlay on faded bottom */}
               <div style={{
